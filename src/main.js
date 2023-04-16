@@ -2,15 +2,27 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Test from './components/Test.vue'
-import TextInput from './components/TextInput.vue'
-
 import './assets/main.css'
+import TextInput from './components/TextInput.vue'
+import PasswordInput from './components/PasswordInput.vue'
+import Title from './components/Title.vue'
 
-const app = createApp(App)
-app.component('Test', Test);
+//Icons
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, far, fab);
+
+const app = createApp(App);
+
 app.component('TextInput', TextInput);
+app.component('PasswordInput', PasswordInput);
+app.component('Title', Title);
+app.component('font-awesome-icon', FontAwesomeIcon);
 
-app.use(router)
-app.use(store)
-app.mount('#app')
+app.use(router);
+app.use(store);
+app.mount('#app');

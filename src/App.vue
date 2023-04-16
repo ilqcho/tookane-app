@@ -3,13 +3,13 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
+  <!-- <RouterLink to="/"></RouterLink> -->
+  <!-- <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/"></RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>
