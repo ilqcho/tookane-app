@@ -1,11 +1,11 @@
 <template>
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center">
         <Title class="text-center mb-5" :title="title" />
         <div class="col-8">
             <div class="d-flex justify-content-between">
                 <ShowRows 
                     :options="options"
-                    @option-selected="onOptionSelected"
+                    @option-selected="onShowRowsSelected"
                 />
                 <button 
                     v-if="isDisabled" 
@@ -77,6 +77,7 @@ export default{
         }
     },
     mounted(){
+        //Fetch orders data from store
         this.$store.dispatch('orders/fetchOrders', {
             limit: this.perPage,
             page: this.currentPage,
@@ -88,12 +89,14 @@ export default{
         }
     },
     watch: {
+        //On perPage change fetch data again
         perPage(newPerPage) {
             this.$store.dispatch('orders/fetchOrders', {
             limit: newPerPage,
             page: this.currentPage,
         });
         },
+        //On currentPage change fetch data again
         currentPage(newPage){
             this.$store.dispatch('orders/fetchOrders', {
             limit: this.perPage,
@@ -128,7 +131,7 @@ export default{
             const routeData = this.$router.resolve({ name: 'order', query: { orderId: row._id } });
             window.open(routeData.href, '_blank');
         },
-        onOptionSelected(option) {
+        onShowRowsSelected(option) {
             this.perPage = option;
         },
     }
@@ -140,5 +143,10 @@ ul{
     display:flex;
     justify-content: center;
 }
-
+table,
+thead,
+th {
+  /* color: black; */
+  font-weight: 600;
+}
 </style>

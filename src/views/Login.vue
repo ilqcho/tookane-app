@@ -1,5 +1,5 @@
 <template>
-    <div class="container login__margin-top">
+    <div class="container">
         <div class="row justify-content-center">
             <form @submit.prevent="submitForm" class="col-md-6">
                 <Title class="text-center mb-5" title="Login" />
@@ -84,24 +84,39 @@ export default{
             return isValid;
         },
         submitForm(){
-            this.validateIncreasingStraight(this.password);
-            this.validateConfusingChars(this.password);
-            this.validatePairsChars(this.password);
-            this.validateLength(this.password);
-            this.validateLowerCase(this.password);
+            let isValid = true;
+
+            if (!this.validateIncreasingStraight(this.password)) {
+                isValid = false;
+            }
+            if (!this.validateConfusingChars(this.password)) {
+                isValid = false;
+            }
+            if (!this.validatePairsChars(this.password)) {
+                isValid = false;
+            }
+            if (!this.validateLength(this.password)) {
+                isValid = false;
+            }
+            if (!this.validateLowerCase(this.password)) {
+                isValid = false;
+            }
 
             if(!this.email){
                 alert('Must enter an email');
             }
-            this.$store.dispatch('auth/login', {
-                email: this.email,
-                password: this.password,
-            });
+            
+            if(isValid){
+                this.$store.dispatch('auth/login', {
+                    email: this.email,
+                    password: this.password,
+                });
 
-            localStorage.email = this.email;
-
-            this.resetData();
-            this.redirect();
+                localStorage.email = this.email;
+    
+                this.resetData();
+                this.redirect();
+            }
         },
         resetData(){
             // Reset the fields value to null
@@ -113,8 +128,3 @@ export default{
     },
 }
 </script>
-<style scoped>
-.login__margin-top{
-    margin-top: 20vh;
-}
-</style>

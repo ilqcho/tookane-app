@@ -1,5 +1,5 @@
 <template>
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center">
         <div class="col-8">
             <Title class="text-center" :title="title" />
             <div class="d-flex justify-content-center mt-5">
@@ -52,11 +52,13 @@ export default{
         }
     },
     mounted(){
+        //Catch id from router query
         const id = this.$route.query.orderId;
-        this.title = `Detalle #${id}`
+        this.title = `Details #${id}`
         this.$store.dispatch('orders/fetchOrder', id);
     },
     computed:{
+        //Fetch order state from store
         ...mapState('orders', ['order'])
     }
 }

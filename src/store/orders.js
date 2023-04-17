@@ -18,7 +18,6 @@ const actions = {
     },
     async fetchOrder({ commit }, id) {
         const response = await axios.get(state.baseUrl + id);
-        console.log(response.data.data)
         commit('setOrder', response.data.data)
     },
 };
