@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import auth from './auth';
+import orders from './orders';
 
 const store = createStore({
 
@@ -9,17 +10,12 @@ const store = createStore({
 
   getters: {},
 
-  actions: {
-      checkAuth(){
-      }
-  },
+  actions: {},
+  
   modules: {
     auth,
+    orders,
   }
 })
 
 export default store;
-
-
-//Initial load
-// store.dispatch('checkAuth');

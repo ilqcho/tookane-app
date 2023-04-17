@@ -20,14 +20,11 @@
                     <button class="btn btn-primary btn-large mt-3 text-right" type="submit">LOGIN</button>
                 </div>
             </form>
-            <!-- {{ isAuthenticated }} -->
         </div>
     </div>
 </template>
 
 <script>
-// import {mapState} from 'vuex';
-
 export default{
     data(){
         return{
@@ -35,9 +32,6 @@ export default{
             password: '',
         }
     },
-    // computed:{
-    //     ...mapState('auth', ['isAuthenticated'])
-    // },
     methods:{
         validateIncreasingStraight(string){
 
@@ -51,7 +45,7 @@ export default{
                     return true;
                 }
             }
-            return alert('The password must contain one increasing straight of at least three letters');
+            alert('The password must contain one increasing straight of at least three letters');
         },
         validateConfusingChars(string) {
             // Regex to search for i, o, l letters
@@ -107,10 +101,14 @@ export default{
             localStorage.email = this.email;
 
             this.resetData();
+            this.redirect();
         },
         resetData(){
             // Reset the fields value to null
             this.email = this.password = null;
+        },
+        redirect(){
+            this.$router.push({ name: 'orders' });
         },
     },
 }

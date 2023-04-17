@@ -6,6 +6,7 @@ import './assets/main.css'
 import TextInput from './components/TextInput.vue'
 import PasswordInput from './components/PasswordInput.vue'
 import Title from './components/Title.vue'
+import ShowRows from './components/ShowRows.vue'
 
 //Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -21,6 +22,7 @@ const app = createApp(App);
 app.component('TextInput', TextInput);
 app.component('PasswordInput', PasswordInput);
 app.component('Title', Title);
+app.component('ShowRows', ShowRows);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(router);
