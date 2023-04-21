@@ -1,13 +1,13 @@
 <template>
     <input 
 		type="text" 
-		class="input" 
 		:value="modelValue" 
 		@input="updateSelf($event.target.value)" 
 	/>
 </template>
 <script>
 export default {
+	name: 'TextInput',
 	props: ["modelValue"],
 	methods: {
 		updateSelf(name) {
@@ -16,3 +16,4 @@ export default {
 	}
 }
 </script>
+

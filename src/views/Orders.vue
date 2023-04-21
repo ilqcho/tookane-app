@@ -1,6 +1,6 @@
 <template>
     <div class="row justify-content-center">
-        <Title class="text-center mb-5" :title="title" />
+        <Title class="text-center mb-3 mt-3" title="Orders list" />
         <div class="col-8">
             <div class="d-flex justify-content-between">
                 <ShowRows 
@@ -62,6 +62,7 @@ import draggable from 'vuedraggable'
 import Paginate from 'vuejs-paginate-next';
 
 export default{
+    name: 'Orders',
     components: {
         draggable,
         paginate: Paginate,
@@ -70,7 +71,6 @@ export default{
         return{
             currentPage: 1,
             email: null,
-            title: null,
             perPage: 10,
             options: [10, 20, 30],
             isDisabled: false,
@@ -82,11 +82,6 @@ export default{
             limit: this.perPage,
             page: this.currentPage,
         });
-
-        if (localStorage.email) {
-            this.email = localStorage.email;
-            this.title = 'Welcome ' + this.email;
-        }
     },
     watch: {
         //On perPage change fetch data again
@@ -146,7 +141,6 @@ ul{
 table,
 thead,
 th {
-  /* color: black; */
   font-weight: 600;
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
-    <div class="d-flex justify-content-center">
-        <img src="../assets/tookane.png" alt="Logo" width="200">
+    <div>
+        <img src="../assets/tookane.png" alt="Logo" width="100">
     </div>
 </template>
+
+<script>
+export default{ name: 'Logo' }
+</script>

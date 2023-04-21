@@ -17,6 +17,7 @@
   
 <script>
 export default {
+    name: 'PasswordInput',
     props: ['modelValue', 'placeholder'],
     data() {
         return {

@@ -9,6 +9,7 @@
 
 <script>
 export default{
+    name: 'ShowRows',
     props: ['options'],
     data(){
         return{

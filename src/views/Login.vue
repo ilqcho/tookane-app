@@ -1,31 +1,33 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <form @submit.prevent="submitForm" class="col-md-6">
-                <Title class="text-center mb-5" title="Login" />
-                <label class="tab-content-label" for="email">Email</label>
-                <TextInput 
-                    placeholder="Enter your email" 
-                    id="email"
-                    v-model="email" 
-                    type="email" 
-                />
-                <label class="tab-content-label mt-3" for="password">Password</label>
-                <PasswordInput 
-                    placeholder="Enter your password" 
-                    id="password"
-                    v-model="password"
-                />
-                <div class="text-center">
-                    <button class="btn btn-primary btn-large mt-3 text-right" type="submit">LOGIN</button>
-                </div>
-            </form>
+    <form @submit.prevent="submitForm" class="">
+        <Title class="text-center mb-5" title="Login" />
+        <label class="tab-content-label" for="email">Email</label>
+        <TextInput 
+            placeholder="Enter your email" 
+            id="email"
+            v-model="email" 
+            type="email" 
+        />
+        <label class="tab-content-label mt-3" for="password">Password</label>
+        <PasswordInput 
+            placeholder="Enter your password" 
+            id="password"
+            v-model="password"
+        />
+        <div class="text-center">
+            <button class="btn btn-primary btn-large mt-3 text-right" type="submit">LOGIN</button>
         </div>
-    </div>
+    </form>
 </template>
 
 <script>
+// import LayoutLogin from '../layouts/LayoutLogin.vue'
+
 export default{
+    name: 'Login',
+    // created(){
+    //     this.$emit('update:layout', LayoutLogin);
+    // },
     data(){
         return{
             email: '',
