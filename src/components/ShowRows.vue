@@ -1,7 +1,7 @@
 <template>
     <div class="form-group">
-        <label for="perPageSelect">Mostrar:</label>
-        <select class="form-control" style="width:60px" id="perPageSelect" v-model="perPage" @change="onSelectChange">
+        <label class="tab-content-label">Mostrar</label>
+        <select class="form-control mt-2" style="width:60px" id="perPageSelect" v-model="perPage" @change="onSelectChange">
             <option v-for="option in options" :value="option">{{ option }}</option>
         </select>
     </div>

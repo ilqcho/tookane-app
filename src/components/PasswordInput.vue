@@ -1,6 +1,8 @@
 <template>
     <div class="input-container">
         <input
+            class="form-control"
+            ref="input"
             :type="type" 
             :value="inputValue" 
             :placeholder="placeholder" 
@@ -29,7 +31,7 @@ export default {
         //Reset input value
         modelValue(){
             if(!this.modelValue){
-                this.inputValue = null;
+                this.inputValue = '';
             }
         }
     },
@@ -37,7 +39,7 @@ export default {
         toggleInputType(type) {
             this.type = type;
             this.$nextTick(() => {
-                this.inputValue = this.$refs.input.modelValue;
+                this.inputValue = this.$refs.input.value;
             });
         },
         updateSelf(value) {

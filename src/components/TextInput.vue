@@ -1,5 +1,6 @@
 <template>
     <input 
+		class="form-control"
 		type="text" 
 		:value="modelValue" 
 		@input="updateSelf($event.target.value)" 

@@ -1,33 +1,28 @@
 <template>
     <form @submit.prevent="submitForm" class="">
         <Title class="text-center mb-5" title="Login" />
-        <label class="tab-content-label" for="email">Email</label>
+        <label class="tab-content-label">Email</label>
         <TextInput 
             placeholder="Enter your email" 
-            id="email"
             v-model="email" 
             type="email" 
+            id="email"
         />
-        <label class="tab-content-label mt-3" for="password">Password</label>
+        <label class="tab-content-label mt-3">Password</label>
         <PasswordInput 
             placeholder="Enter your password" 
-            id="password"
             v-model="password"
+            id="password"
         />
         <div class="text-center">
-            <button class="btn btn-primary btn-large mt-3 text-right" type="submit">LOGIN</button>
+            <submit-button class="mt-3" type="submit">LOGIN</submit-button>  
         </div>
     </form>
 </template>
 
 <script>
-// import LayoutLogin from '../layouts/LayoutLogin.vue'
-
 export default{
     name: 'Login',
-    // created(){
-    //     this.$emit('update:layout', LayoutLogin);
-    // },
     data(){
         return{
             email: '',

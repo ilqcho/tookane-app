@@ -10,6 +10,8 @@ import ShowRows from './components/ShowRows.vue'
 import Logo from './components/Logo.vue'
 import NavBar from './components/NavBar.vue'
 import Footer from './components/Footer.vue'
+import SubmitButton from './components/buttons/SubmitButton.vue'
+import SwitchButton from './components/buttons/SwitchButton.vue'
 
 //Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -22,11 +24,11 @@ library.add(fas, far, fab);
 const app = createApp(App);
 
 //Enable to console.log rendered components
-// app.mixin({
-//     created() {
-//       console.log('[created] ' + this.$options.name)
-//     },
-// });
+app.mixin({
+    created() {
+      console.log('[created] ' + this.$options.name)
+    },
+});
 
 app.component('TextInput', TextInput);
 app.component('PasswordInput', PasswordInput);
@@ -35,6 +37,9 @@ app.component('ShowRows', ShowRows);
 app.component('Logo', Logo);
 app.component('NavBar', NavBar);
 app.component('Footer', Footer);
+app.component('SubmitButton', SubmitButton);
+app.component('SwitchButton', SwitchButton);
+
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(router);

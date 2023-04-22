@@ -2,21 +2,15 @@
     <div class="row justify-content-center">
         <Title class="text-center mb-3 mt-3" title="Orders list" />
         <div class="col-8">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-baseline">
                 <ShowRows 
                     :options="options"
-                    @option-selected="onShowRowsSelected"
+                    @option-selected="showRowsSelected"
                 />
-                <button 
-                    v-if="isDisabled" 
-                    class="btn btn-primary h-75" 
-                    @click="toggleDraggable">Enable dragg
-                </button>
-                <button 
-                    v-else
-                    class="btn btn-primary h-75" 
-                    @click="toggleDraggable">Disable dragg
-                </button>
+                <div>
+                    <label class="tab-content-label">Enable Drag</label>
+                    <SwitchButton class="mt-2 ml-2" v-model="checkboxValue" />
+                </div>
             </div>
             <table class="table table-striped table-hover mt-3">
                 <thead>
@@ -30,7 +24,7 @@
                     v-model="orders" 
                     :itemKey="(order, index) => order._id || index" 
                     tag="tbody"
-                    :disabled="isDisabled"
+                    :disabled="!checkboxValue"
                     >
                     <template #item="{element, index}">
                         <tr class="text-center" @click="selectRow(element)" style="cursor:pointer">
@@ -58,14 +52,14 @@
     </div>
 </template>
 <script>
-import draggable from 'vuedraggable'
-import Paginate from 'vuejs-paginate-next';
+import draggable from 'vuedraggable';
+import paginate from 'vuejs-paginate-next';
 
 export default{
     name: 'Orders',
     components: {
         draggable,
-        paginate: Paginate,
+        paginate,
     },
     data(){
         return{
@@ -73,51 +67,40 @@ export default{
             email: null,
             perPage: 10,
             options: [10, 20, 30],
-            isDisabled: false,
+            checkboxValue: false,
         }
     },
     mounted(){
-        //Fetch orders data from store
-        this.$store.dispatch('orders/fetchOrders', {
-            limit: this.perPage,
-            page: this.currentPage,
-        });
+        this.fetchOrders(this.perPage, this.currentPage);
     },
     watch: {
-        //On perPage change fetch data again
+        // React to changes in perPage and currentPage
         perPage(newPerPage) {
-            this.$store.dispatch('orders/fetchOrders', {
-            limit: newPerPage,
-            page: this.currentPage,
-        });
+            this.fetchOrders(newPerPage, this.currentPage);
         },
-        //On currentPage change fetch data again
-        currentPage(newPage){
-            this.$store.dispatch('orders/fetchOrders', {
-            limit: this.perPage,
-            page: newPage,
-        });
+        currentPage(newPage) {
+            this.fetchOrders(this.perPage, newPage);
         }
     },
     computed:{
+        orders: {
+            get() {
+                return this.$store.state.orders.orders;
+            },
+            set(value) {
+                this.$store.commit('orders/setOrders', value);
+            }
+        },
         totalResults(){
-            return this.$store.state.orders.totalResults
+            return this.$store.state.orders.totalResults;
         },
         pageCount(){
             return Math.round(this.totalResults / this.perPage);
         },
-        orders: {
-            get() {
-                return this.$store.state.orders.orders
-            },
-            set(value) {
-                this.$store.commit('orders/setOrders', value)
-            }
-        },
     },
     methods:{
-        toggleDraggable(){
-            return this.isDisabled ? this.isDisabled = false :  this.isDisabled = true;
+        fetchOrders(limit, page) {
+            this.$store.dispatch('orders/fetchOrders', { limit, page });
         },
         changePage(pageNum){
             this.currentPage = pageNum;
@@ -126,7 +109,7 @@ export default{
             const routeData = this.$router.resolve({ name: 'order', query: { orderId: row._id } });
             window.open(routeData.href, '_blank');
         },
-        onShowRowsSelected(option) {
+        showRowsSelected(option) {
             this.perPage = option;
         },
     }

@@ -29,13 +29,14 @@ export default{
 
 <style scoped>
 .layoutDefault {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 1em;
-  padding-left: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1em;
+    padding-left: 1em;
 }
 .layoutDefault__main {
-  padding-top: 1.5em;
-  padding-bottom: 2em;
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+    min-height: 88vh !important;
 }
 </style>

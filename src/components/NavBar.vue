@@ -20,6 +20,11 @@
 <script>
 export default{ 
     name: 'NavBar',
-    props: ['greetings'],
+    props: {
+        greetings: {
+            type: String,
+            required: false,
+        }
+    },
 }
 </script>
