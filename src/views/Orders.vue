@@ -1,6 +1,5 @@
 <template>
     <div class="row justify-content-center">
-        <Title class="text-center mb-3 mt-3" title="Orders list" />
         <div class="col-8">
             <div class="d-flex justify-content-between align-items-baseline">
                 <ShowRows 

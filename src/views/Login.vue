@@ -1,6 +1,5 @@
 <template>
     <form @submit.prevent="submitForm" class="">
-        <Title class="text-center mb-5" title="Login" />
         <label class="tab-content-label">Email</label>
         <TextInput 
             placeholder="Enter your email" 
@@ -108,8 +107,6 @@ export default{
                     email: this.email,
                     password: this.password,
                 });
-
-                localStorage.email = this.email;
     
                 this.resetData();
                 this.redirect();

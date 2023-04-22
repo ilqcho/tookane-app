@@ -6,16 +6,19 @@ const actions = {
     login({ commit }, { email, password }) {
 
         if (email && password) {
-            commit("authenticate");
-            return true;
+            commit("authenticate", true);
+            window.localStorage.setItem('email', email);
         }
-        return false;
+    },
+    logout({ commit }) {
+        commit("authenticate", false);
+        window.localStorage.removeItem('email');    
     },
 };
 
 const mutations = {
-    authenticate(state) {
-        state.isAuthenticated = true;
+    authenticate(state, value) {
+        state.isAuthenticated = value;
     },
 };
 

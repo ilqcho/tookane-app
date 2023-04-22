@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <Logo />
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul></ul>
+                <ul><button @click="logout">LOGOUT</button></ul>
                 <ul class="navbar-nav me-auto mt-1 mb-lg-0">
                     <li class="nav-item">
                         <router-link to="/">Home</router-link>
@@ -26,5 +26,14 @@ export default{
             required: false,
         }
     },
+    methods: {
+        logout(){
+            this.$store.dispatch('auth/logout');
+            this.redirect();
+        },
+        redirect(){
+            this.$router.push({ name: 'login' });
+        },
+    }
 }
 </script>

@@ -3,6 +3,7 @@
     <div class="container layout-login__margin-top">
         <div class="row justify-content-center">
             <div class="col-md-5">
+                <Title class="text-center mb-5" :title="$store.getters.title"/>
                 <slot/>
             </div>
         </div>

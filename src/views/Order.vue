@@ -1,7 +1,6 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-8">
-            <Title class="text-center" :title="title" />
             <div class="d-flex justify-content-center mt-5">
                 <div class="card" style="width: 20rem;">
                     <div class="card-body">
@@ -47,11 +46,6 @@ import { mapState } from 'vuex';
 
 export default{
     name: 'Order',
-    data(){
-        return{
-            title: null,
-        }
-    },
     mounted(){
         //Catch id from router query
         const id = this.$route.query.orderId;

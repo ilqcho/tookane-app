@@ -3,6 +3,7 @@
     <div class="layoutDefault">
         <NavBar :greetings="greetings" />
         <main class="layoutDefault__main">
+            <Title class="text-center mb-5" :title="$store.getters.title"/>
             <slot/>
         </main>
         <Footer :brand-name="brandName" />
@@ -20,8 +21,7 @@ export default{
     },
     mounted(){
         if (localStorage.email) {
-            this.email = localStorage.email;
-            this.greetings = 'Hello ' + this.email;
+            this.greetings = 'Hello ' + localStorage.email;
         }
     },
 }
